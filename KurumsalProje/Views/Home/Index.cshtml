@@ -1,0 +1,206 @@
+﻿@*@model IEnumerable<KurumsalProje.Models.Hizmet>*@
+@model KurumsalProje.Models.ViewModel
+
+@{
+    ViewBag.Title = "AnaSayfa";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+<head>
+    <style type="text/css">
+        img {
+            /*border: 3px solid brown;*/
+            width: 300px;
+            height: 200px;
+            background-color: ActiveBorder;
+            margin-bottom: 10px;
+            text-align: center;
+            text-align: justify;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        body {
+            /*background: rgba(30, 67, 86, 0.8);*/
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        td {
+            margin-right: 50px;
+            /*border: 3px solid brown;*/
+            width: 350px;
+            height: 50px;
+            background-color: ActiveBorder;
+            margin-bottom: 10px;
+            font-family: Times New Roman, Arial, Helvatica;
+            text-align: center !important;
+            text-indent: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <!-- End Hero No Slider Sectio -->
+    <section id="hero-no-slider" class="d-flex justify-cntent-center align-items-center">
+        <div class="container position-relative" data-aos="fade-up">
+
+            <main id="main">
+                        <div class="row justify-content-center">
+                            <div class="row justify-content-center">
+                                <div>
+                                    @*@{Html.RenderAction("SliderPartial", "Home");
+                                        }*@
+                                    <h2>Kurumsal Web Sitemize Hoşgeldiniz</h2>
+                                    <p></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+      
+                <section class="services" id="Hakkimizda">
+                    <div class="container">
+                        @foreach (var hakkimizda in Model.Hakkimizda)
+                        {
+
+                            <div class="row">
+                                <div data-aos="fade-up">
+                                    <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                                    <h4 class="title" align="center"><a href="">BİZ KİMİZ?</a></h4>
+                                    <p class="description">@hakkimizda.Aciklama</p>
+                                </div>
+                            </div>
+
+
+
+
+                        }
+
+                    </div>
+                </section>
+                @*@{Html.RenderAction("SliderPartial", "Home");*@
+
+                <!-- ======= Services Section ======= -->
+                <section class="services" id="Hizmet">
+                    <div class="container">
+                        <table class="table table-striped" width:100px;>
+                            <div align="center">
+                                <h4 class="title" align="center"><a href="">HİZMETLERLİMİZ</a></h4>
+
+                                @foreach (var hizmet in Model.Hizmet)
+                                {
+
+                                    <td><h4 class="title">@hizmet.Baslik</h4></td>
+
+
+
+
+                                }
+
+                            </div>
+                        </table>
+                        <table class="table table-striped" width:100px;>
+                            <div align="center">
+
+                                @foreach (var hizmet in Model.Hizmet)
+                                {
+
+                                    <td width="60"><h4 class="title">@hizmet.Aciklama</h4> </td>
+
+
+
+
+                                }
+                            </div>
+                        </table>
+                        <table class="table table-striped" width:100px;>
+                            <div align="center">
+                                @foreach (var hizmet in Model.Hizmet)
+                                {
+
+                                    <img src=" @hizmet.ResimURL" title="@hizmet.Aciklama" />
+
+
+
+
+                                }
+
+                            </div>
+                        </table>
+
+                    </div>
+                </section><!-- End Services Section -->
+                <!-- ======= Why Us Section ======= -->
+                <!-- End Features Section -->
+
+
+            </main>
+
+            <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+
+
+                <div class="footer-top" id="iletisim">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-3 col-md-6 footer-links">
+                                <h4>Menüler</h4>
+                                <ul>
+                                    <li><i class="bx bx-chevron-right"></i> <a href="#">AnaSayfa</a></li>
+                                    <li><i class="bx bx-chevron-right"></i> <a href="#">Hakkımızda</a></li>
+                                    <li><i class="bx bx-chevron-right"></i> <a href="#">Hizmetlerimiz</a></li>
+                                    <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
+                                    <li><i class="bx bx-chevron-right"></i> <a href="#">İletişim</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 footer-links">
+                                <h4>Hizmetlerimiz</h4>
+                                <ul>
+                                    <li><i class="bx bx-chevron-right"></i> <a href="#">Eğitim Hizmeti</a></li>
+                                    <li><i class="bx bx-chevron-right"></i> <a href="#">Kurumsal Hizmet</a></li>
+                                    <li><i class="bx bx-chevron-right"></i> <a href="#">Bireysel Hizmet</a></li>
+                                </ul>
+                            </div>
+                            @foreach (var iletisim in Model.Iletisim)
+                            {
+                                @*@foreach (var item in ViewBag.iletisim)
+                                    {*@
+                                <div class="col-lg-3 col-md-6 footer-contact">
+                                    <h4>Bize Ulaş</h4>
+                                    <p>
+                                        <br>@iletisim.Adres<br>
+                                        <br />
+                                        <strong>Telefon: </strong>@iletisim.Tel <br>
+                                        <strong>Mail:</strong> info@KurumsalWeb.com<br>
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-3 col-md-6 footer-info">
+                                    <h3>Kurumsal Web Hakkında</h3>
+                                    <div class="social-links mt-3">
+                                        <p>Kurumsal projelerimiz ve deneyimli kadromuz ile bilişim ve eğitim dünyasında en iyi hizmetleri sunmaya çalışıyoruz</p>
+                                        <br />
+                                        <a href="#" class="twitter" title="@iletisim.Twitter"><i class="bx bxl-twitter"></i></a>
+                                        <a href="#" class="facebook" title="@iletisim.Facebook"><i class="bx bxl-facebook"></i></a>
+                                        <a href="#" class="instagram" title="@iletisim.Instagram"><i class="bx bxl-instagram"></i></a>
+                                        <a href="#" class="bxl-whatsapp" title="@iletisim.Whatsapp"><i class="bx bxl-whatsapp"></i></a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+        
+            </footer><!-- End Footer -->
+            @*<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>*@
+
+</body>
+
+

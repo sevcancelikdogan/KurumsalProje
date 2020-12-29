@@ -1,0 +1,32 @@
+﻿@model IEnumerable<KurumsalProje.Models.Hakkimizda>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımızda</h2>
+<p>
+    <a class="btn btn-default" href="/Hakkimizda/Create">Yeni Açıklama Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Açıklama</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(item.Aciklama)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.HakkimizdaId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.HakkimizdaId })
+        </td>
+    </tr>
+}
+
+</table>

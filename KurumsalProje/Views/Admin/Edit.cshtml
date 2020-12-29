@@ -1,0 +1,52 @@
+﻿@model KurumsalProje.Models.Admin
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AdminId)
+
+        <div class="form-group">
+            <label for="eposta" class="control-label col-lg-2">E-posta <span class="required">*</span></label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Eposta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Eposta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sifre" class="control-label col-lg-2">Şifre <span class="required">*</span></label>
+            <div class="col-md-10">
+                @*<input  type="password" class="form-control" value="@Crypto.Hash(Model.Sifre)"/>*@
+                @Html.EditorFor(model => model.Sifre, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Yetki" class="control-label col-lg-2">Yetki <span class="required">*</span></label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Yetki, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Yetki, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Geri Dön", "Index")
+                <input type="submit" value="Güncelle" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

@@ -1,0 +1,123 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using KurumsalProje.Helper;
+@model IPagedList<KurumsalProje.Models.Blog>
+
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+<header id="header">
+    <div class="container">
+
+
+    </div>
+</header><!-- End Blog Section -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Blog Kayıtları</h2>
+
+           
+        </div>
+
+    </div>
+</section><!-- End Blog Section -->
+
+<section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-8 entries">
+
+                @foreach (var item in Model)
+                {
+
+                    <article class="entry">
+
+                        <div class="entry-img">
+                            <h2 class="entry-title">
+                                <a href="/BlogPost/@SeoHelper.ToSeoUrl(item.Baslik).ToLower()-@item.BlogId">@item.Baslik</a>
+                            </h2>
+                            <img src="@item.ResimUrl" alt="@item.Baslik">
+                        </div>
+                        <div class="entry-meta">
+                            <ul>
+                                
+                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">@DateTime.Now.ToLocalTime()</time></a></li>
+                                <li class="d-flex align-items-center">
+                                    @*<i class="icofont-comment"></i> <a href="blog-single.html">
+                                            12
+                                            Comments
+                                        </a>*@
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="entry-content">
+                            <p>
+                                @Html.Raw(item.Icerik.Substring(0, 100))
+                            </p>
+                            <div class="read-more">
+                                <a href="/BlogPost/@SeoHelper.ToSeoUrl(item.Baslik).ToLower()-@item.BlogId">Okumaya Devam Et..</a>
+                            </div>
+                            <span>@item.Kategori.KategoriAd</span>
+
+                        </div>
+
+                    </article><!-- End blog entry -->
+                }
+                <div class="blog-pagination">
+                    @Html.PagedListPager(Model, Sayfa => Url.Action("Blog", new { Sayfa }),PagedListRenderOptions.Classic)
+                    @*<ul class="justify-content-center">
+                        <li class="disabled"><i class="icofont-rounded-left"></i></li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="icofont-rounded-right"></i></a></li>
+                    </ul>*@
+                </div>
+
+            </div><!-- End blog entries list -->
+
+            <div class="col-lg-4">
+                <div class="sidebar">
+
+                    @*<h3 class="sidebar-title">Search</h3>*@
+                    <div class="sidebar-item search-form">
+                        @*<form action="">*@
+                            @*<input type="text">*@
+                            @*<button type="submit"><i class="icofont-search"></i></button>*@
+                        @*</form>*@
+                    </div><!-- End sidebar search formn-->
+
+                    <h3 class="sidebar-title">Kategoriler</h3>
+                    <div class="sidebar-item categories">
+
+                        @{Html.RenderAction("BlogKategoriPartial", "Home");
+                        }
+
+                    </div><!-- End sidebar categories-->
+                  
+
+                        <h3 class="sidebar-title">Son Blog Kayıtları</h3>
+                        <div class="sidebar-item recent-posts">
+                            
+                            @{Html.RenderAction("BlogKayitPartial", "Home");
+                            }
+
+
+                        </div><!-- End sidebar recent posts-->
+                         <!-- End sidebar tags-->
+
+                    </div><!-- End sidebar -->
+                 
+            </div><!-- End blog sidebar -->
+
+        </div><!-- End .row -->
+
+    </div><!-- End .container -->
+
+</section><!-- End Blog Section -->

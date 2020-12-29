@@ -1,0 +1,16 @@
+﻿@model IEnumerable<KurumsalProje.Models.Blog>
+@using KurumsalProje.Helper;
+
+@foreach (var item in Model)
+{
+    <div class="post-item clearfix">
+        <img src="@item.ResimUrl" alt="@item.Baslik">
+        <h4><a href="/BlogPost/@SeoHelper.ToSeoUrl(item.Kategori.KategoriAd).ToLower()-@item.BlogId">@item.Baslik</a></h4>
+        <p>
+            @Html.Raw(item.Icerik.Substring(0, 100));
+        </p>
+    </div>
+}
+
+
+

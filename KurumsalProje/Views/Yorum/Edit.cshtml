@@ -1,0 +1,69 @@
+﻿@model KurumsalProje.Models.Yorum
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.YorumId)
+
+        <div class="form-group">
+            <label for="cname" class="control-label col-lg-2">Ad Soyad <span class="required">*</span></label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AdSoyad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AdSoyad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cname" class="control-label col-lg-2">E posta <span class="required">*</span></label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Eposta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Eposta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cname" class="control-label col-lg-2">İçerik <span class="required">*</span></label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.İcerik, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.İcerik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cname" class="control-label col-lg-2">Blog Numarası <span class="required">*</span></label>
+            <div class="col-md-10">
+                @Html.DropDownList("BlogId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BlogId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cname" class="control-label col-lg-2">Onay <span class="required">*</span></label>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Onay)
+                    @Html.ValidationMessageFor(model => model.Onay, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn btn-default" type="button"><a href="/Yorum/Index">Geri Dön</a></button>
+                <button class="btn btn-primary" type="submit">Güncellle</button>
+            </div>
+        </div>
+    </div>
+}
+
+

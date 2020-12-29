@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Bize Ulaş</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <style type="text/css">
+        header {
+            color: #444;
+            background-color: transparent;
+            padding: 40px 0;
+            transition: 0.3s;
+        }
+
+        body {
+            color: #444;
+        }
+    </style>
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Moderna - v2.1.0
+    * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+
+
+        </div>
+    </header>
+
+
+    <main id="main">
+
+        <!-- ======= Contact Section ======= -->
+        <!-- End Contact Section -->
+        <!-- ======= Contact Section ======= -->
+        <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="info-box">
+                                    <i class="bx bx-map"></i>
+                                    <h3>Adresimiz</h3>
+                                    <p>Cemil meriç mahallesi, petrol yolu caddesi no:6 ümraniye/istanbul</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box">
+                                    <i class="bx bx-envelope"></i>
+                                    <h3>
+                                        Mail Adresimiz<h3>
+                                            <p>info@example.com<br>contact@example.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box">
+                                    <i class="bx bx-phone-call"></i>
+                                    <h3>Bizi Ara</h3>
+                                    <p>531 984 79 13<br>0216 657 80 74</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="alert alert-info" >@ViewBag.Uyari</div>
+                        <div class="error-message"></div>
+                        <form action="~/Home/Iletisim/" method="post" role="form"class="contactform">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="adsoyad" class="form-control" id="name" placeholder="Adınız" data-rule="minlen:4" data-msg="En az 4 karakter giriniz" required />
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Mail Adresiniz" data-rule="email" data-msg="En az 4 karakter giriniz" required />
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="konu" id="subject" placeholder="Konu" data-rule="minlen:4" data-msg="En az 4 karakter giriniz" required />
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="mesaj" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mesaj" required></textarea>
+                                <div class="validate"></div>
+                            </div>
+
+                            <div class="text-center"><button type="submit" class="btn btn-theme">Mesaj Gönder</button></div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+        <!-- ======= Map Section ======= -->
+        <section class="map mt-2">
+            <div class="container-fluid p-0">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.3781219749276!2d29.136477314914657!3d41.01698272683904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac8d2d19ad425%3A0xd9dd03ac2d83dccc!2sCemil%20Meri%C3%A7%2C%20Petrol%20Yolu%20Cd.%20No%3A6%2C%2034771%20Dudullu%20Osb%2F%C3%9Cmraniye%2F%C4%B0stanbul%2C%20T%C3%BCrkiye!5e0!3m2!1str!2s!4v1609015146480!5m2!1str!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </section><!-- End Map Section -->
+
+    </main><!-- End #main -->
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
+

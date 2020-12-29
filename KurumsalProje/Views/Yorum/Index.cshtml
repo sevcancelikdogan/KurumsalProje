@@ -1,0 +1,49 @@
+﻿@model IEnumerable<KurumsalProje.Models.Yorum>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Blog Yorumları</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Adı Soyadı</th>
+            <th>E-posta</th>
+            <th>İçerik</th>
+            <th>Onay</th>
+            <th>Blog Başlığı</th>
+            <th>İşlemler</th>
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdSoyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eposta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.İcerik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Onay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blog.Baslik)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id = item.YorumId }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.YorumId })
+        </td>
+    </tr>
+    }
+
+</table>

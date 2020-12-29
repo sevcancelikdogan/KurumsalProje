@@ -1,0 +1,38 @@
+﻿@model IEnumerable<KurumsalProje.Models.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<a class="btn btn-primary" href="/Kategori/Create">Yeni Kategori Ekle</a>
+
+<h2>Kategori</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Kategori Adı</th>
+            <th>Açıklama</th>
+            <th>İşlemler</th>
+
+
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KategoriAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aciklama)
+            </td>
+            <td>
+            <td><a href="/Kategori/Edit/@item.KategoriId">Güncelle</a> | <a href="/Kategori/Delete/@item.KategoriId">Sil</a></td>
+            </td>
+        </tr>
+    }
+
+</table>

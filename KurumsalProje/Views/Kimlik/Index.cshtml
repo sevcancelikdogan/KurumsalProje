@@ -1,0 +1,38 @@
+﻿@model IEnumerable<KurumsalProje.Models.Kimlik>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kimlik Kayıtları</h2>
+<a class="btn btn-primary" href="/Kimlik/Create">Yeni Kimlik Ekle</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>Anahtar</th>
+            <th>Açıklama</th>
+            <th>Logo URL</th>
+            <th>Unvan</th>
+            <th>İşlemler</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.Title)</td>
+            <td> @Html.DisplayFor(modelItem => item.Keywords)</td>
+            <td> @Html.DisplayFor(modelItem => item.Description)</td>
+            <td><img src="@item.LogoUrl" width="100" height="100" /></td>
+            <td> @Html.DisplayFor(modelItem => item.Unvan)</td>
+            <td><a href="/Kimlik/Edit/@item.KimlikId">Güncelle</a> | <a href="/Kimlik/Delete/@item.KimlikId">Sil</a></td>
+        </tr>
+        }
+
+
+    </tbody>
+</table>
+

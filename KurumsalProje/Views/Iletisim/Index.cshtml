@@ -1,0 +1,42 @@
+﻿@model IEnumerable<KurumsalProje.Models.Iletisim>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>İletişim</h2>
+<a class="btn btn-primary" href="/Iletisim/Create">Yeni İletişim Adresi Ekle</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Adres</th>
+            <th>Telefon</th>
+            <th>Fax</th>
+            <th>Whatsapp</th>
+            <th>Facebook</th>
+            <th>Twitter</th>
+            <th>Instagram</th>
+            <th>İşlemler</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.Adres)</td>
+            <td> @Html.DisplayFor(modelItem => item.Tel)</td>
+            <td> @Html.DisplayFor(modelItem => item.Fax)</td>
+            <td> @Html.DisplayFor(modelItem => item.Whatsapp)</td>
+            <td> @Html.DisplayFor(modelItem => item.Facebook)</td>
+            <td> @Html.DisplayFor(modelItem => item.Twitter)</td>
+            <td> @Html.DisplayFor(modelItem => item.Instagram)</td>
+            <td><a href="/Iletisim/Edit/@item.IletisimId">Güncelle</a> | <a href="/Iletisim/Delete/@item.IletisimId">Sil</a></td>
+        </tr>
+        }
+
+
+    </tbody>
+</table>

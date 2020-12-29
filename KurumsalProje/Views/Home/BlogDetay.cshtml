@@ -1,0 +1,177 @@
+﻿@model KurumsalProje.Models.Blog
+
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+<style type="text/css">
+        yorum {
+            /*border: 3px solid brown;*/
+      
+            margin-top: 10px;
+            
+        }
+    </style>
+<header id="header">
+    <div class="container">
+
+
+    </div>
+</header><!-- End Blog Section -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+
+        </div>
+
+    </div>
+</section><!-- End Blog Section -->
+
+<section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-8 entries">
+
+
+                <article class="entry">
+
+                    <div class="entry-img">
+                        @Model.Kategori.KategoriAd
+
+                        <h6 class="entry-title">
+
+                            @Model.Baslik
+                        </h6>
+                        <img src="@Model.ResimUrl" alt="@Model.Baslik">
+                    </div>
+                    <div class="entry-meta">
+                        <ul>
+                            
+                            <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">@DateTime.Now.ToLocalTime()</time></a></li>
+                            <li class="d-flex align-items-center">
+                                @*<i class="icofont-comment"></i> <a href="blog-single.html">
+                            12
+                            Comments
+                        </a>*@
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-content">
+                        <p>
+                            @Html.Raw(Model.Icerik)
+                        </p>
+                        <div class="read-more">
+                        </div>
+
+                    </div>
+
+                </article><!-- End blog entry -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h2>Yorum Yap</h2>
+                            <div>
+                                <input type="text" id="adsoyad" placeholder="Adınız Soyadınız" required class="form-control" />
+                                </br>
+                                <input type="email" id="eposta" placeholder="Mail Adresiniz" required class="form-control" />
+                                <br />
+                                <textarea typeof="text" id="icerik" class="form-control"></textarea>
+                                <br />
+                                <button type="submit" class="btn btn-success" id="gonder" value="yorum yap">Yorum Yap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="yorum" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+                    <div class="container">
+
+                        <div class="row">
+
+                            <div class="col-lg-8 entries">
+                                <h3>Blog Makale Yorumları</h3>
+                                @foreach (var item in Model.Yorums.OrderByDescending(x => x.YorumId).Where(x => x.Onay == true))
+                                {
+                                    <p>@item.AdSoyad - @item.Eposta</p>
+                                    <p>@item.İcerik</p>
+                                    <hr />
+                                }
+                            </div>
+                        </div>
+                       </div>
+                    </section>
+                    </div><!-- End blog entries list -->
+
+                    <div class="col-lg-4">
+                        <div class="sidebar">
+
+                            @*<h3 class="sidebar-title">Search</h3>*@
+                            <div class="sidebar-item search-form">
+                                @*<form action="">*@
+                                @*<input type="text">*@
+                                @*<button type="submit"><i class="icofont-search"></i></button>*@
+                                @*</form>*@
+                            </div><!-- End sidebar search formn-->
+
+                            <h3 class="sidebar-title">Kategoriler</h3>
+                            <div class="sidebar-item categories">
+
+                                @{Html.RenderAction("BlogKategoriPartial", "Home");
+                                }
+
+                            </div><!-- End sidebar categories-->
+
+                            <h3 class="sidebar-title">Son Blog Kayıtları</h3>
+                            <div class="sidebar-item recent-posts">
+
+                                @{Html.RenderAction("BlogKayitPartial", "Home");
+                                }
+
+
+                            </div><!-- End sidebar recent posts-->
+                            ><!-- End sidebar tags-->
+                            @*alert(adsoyad + ' ' + eposta + ' ' + yorum);*@
+
+                        </div><!-- End sidebar -->
+
+                        </div><!-- End blog sidebar -->
+
+</div><!-- End .row -->
+
+    </div><!-- End .container -->
+
+</section><!-- End Blog Section -->
+<script src="~/Scripts/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+       $("#gonder").click(function () {
+    var adsoyad = $("#adsoyad").val();
+    var eposta = $("#eposta").val();
+    var yorum = $("#icerik").val(); console.log(eposta);
+    $.ajax({
+            url: '/Home/YorumYap/',
+            data: {adsoyad: adsoyad, eposta: eposta, icerik: yorum, blogid: @Model.BlogId},
+            type:'POST',
+            dataType: 'Json',
+            success: function (data) {
+                 if(data.sonuc == '1'){
+                   alert(data.mesaj);
+                     setTimeout(function(){
+                        location.reload();
+                     }, 1000);
+
+
+                }else {
+                    alert(data.mesaj);
+    }
+                //alert(adsoyad + "Yorumunuz eklendi, kontrol edildikten sonra yayınlanacaktır");
+             }
+         });
+       });
+    });
+</script>

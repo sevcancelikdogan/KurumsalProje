@@ -1,0 +1,53 @@
+﻿@model KurumsalProje.Models.Admin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sifremi Unuttum - Admin</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/AdminLayout/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="~/Content/AdminLayout/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="~/Content/AdminLayout/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="~/Content/AdminLayout/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="~/Content/AdminLayout/css/style.css" rel="stylesheet">
+</head>
+<body>
+    @*@using (Html.BeginForm("SifremiUnuttum", "Admin", FormMethod.Post, new {enctype="multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()*@
+    <p class="alert alert-info">
+        @ViewBag.Uyari
+    </p>
+    <form action="/Admin/SifremiUnuttum/" method="post">
+        <div class="form-horizontal container">
+            <hr />
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="email" class="form-control" name="email" required placeholder="E posta Adresiniz"/>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn btn-default" type="button"><a href="/Admin/Login">Geri Dön</a></button>
+                    <input type="submit" value="Şifremi Mail Olarak Gönder" class="btn btn-default" />
+                </div>
+               
+            </div>
+        </div>
+    </form>
+    
+    
+</body>
+</html>

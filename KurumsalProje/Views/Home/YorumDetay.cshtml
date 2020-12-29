@@ -1,0 +1,32 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<KurumsalProje.Models.Yorum>
+
+<section class="yorum" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-8 entries">
+                <h3>Blog Makale Yorumları</h3>
+                @foreach (var item in Model.OrderByDescending(x => x.YorumId).Where(x => x.Onay == true))
+                {
+                    <p>@item.AdSoyad - @item.Eposta</p>
+                    <p>@item.İcerik</p>
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="blog-pagination">
+    @Html.PagedListPager(Model, Sayfa => Url.Action("Yorum", new { Sayfa }), PagedListRenderOptions.Classic)
+    @*<ul class="justify-content-center">
+            <li class="disabled"><i class="icofont-rounded-left"></i></li>
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#"><i class="icofont-rounded-right"></i></a></li>
+        </ul>*@
+</div>
